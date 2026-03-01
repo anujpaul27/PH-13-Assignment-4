@@ -9,19 +9,20 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     <title>Job Checker</title>
 </head>
-<div class="w-10/12 mx-auto  lg:mt-20 ">
-    <h1 class="text-2xl my-10 text-center text-blue-400 font-bold ">Job Application Tracker</h1>
+<div class="lg:w-10/12 mx-auto  lg:mt-20 mt-5 ">
+    <h1 class="lg:text-3xl text-2xl  my-5  lg:my-10 text-center text-blue-400 font-bold ">Job Application Tracker</h1>
+
     <!-- Navbar card -->
-    <section class="flex gap-4 justify-center ">
-        <div class="w-1/4 px-3 py-5  bg-gray-700 ">
+    <section class="flex gap-4 justify-center lg:text-left text-center  ">
+        <div class="w-1/4 px-3 lg:py-5 py-2  bg-gray-700 rounded-sm  ">
             <p>Total </p>
             <h1 class="nav-total-card">8</h1>
         </div>
-        <div class="w-1/4 px-3 py-5  bg-gray-700 ">
+        <div class="w-1/4 px-3 lg:py-5 py-2  bg-gray-700 rounded-sm  ">
             <p>Interview </p>
             <h1 class="nav-interview-card">0</h1>
         </div>
-        <div class="w-1/4 px-3 py-5  bg-gray-700 ">
+        <div class="w-1/4 px-3 lg:py-5 py-2  bg-gray-700 rounded-sm  ">
             <p>Rejected </p>
             <h1 class="nav-rejected-card">0</h1>
         </div>
@@ -29,15 +30,15 @@
 </div>
 
 <!-- Available Job -->
-<section class="w-8/12 mx-auto mt-5  ">
+<section class="lg:w-8/12 w-11/12 mx-auto lg:mt-5  ">
     <div class="w-full flex justify-between align-center py-3">
-        <h1 class="text-2xl  ">Available Job</h1>
-        <p class="count">Jobs <span class="nav-total-card1">8</span> </p>
+        <h1 class="lg:text-2xl  ">Available Job</h1>
+        <p class="count lg:text-sm  text-[12px] ">Jobs <span class="nav-total-card1">8</span> </p>
     </div>
     <div class="flex gap-3 ">
-        <button id="allShow" class="btn btn-success ">All</button>
-        <button id="interviewShow" class="btn btn-success ">Interview</button>
-        <button id="rejectedShow" class="btn btn-success ">Rejected</button>
+        <button id="allShow" class="btn btn-success lg:btn-md btn-sm ">All</button>
+        <button id="interviewShow" class="btn btn-success lg:btn-md btn-sm ">Interview</button>
+        <button id="rejectedShow" class="btn btn-success lg:btn-md btn-sm ">Rejected</button>
     </div>
 
     <!-- all main card -->
@@ -45,9 +46,10 @@
 
         <div class="card bg-gray-800 my-3 text-neutral-content w-full">
             <button class=" DeleteBtn btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            <div class="card-body">
-                <h2 class="card-title text-blue-300">TechFlow Solutions (Senior Frontend Engineer)</h2>
-                <p class="leading-1.5 text-gray-400">Remote (San Francisco, CA)</p>
+
+            <div class="card-body lg:text-sm text-[12px] ">
+                <h2 class="card-title text-blue-300 lg:text-lg text-md ">TechFlow Solutions (Senior Frontend Engineer)</h2>
+                <p class="leading-1.5 text-gray-400 ">Remote (San Francisco, CA)</p>
                 <p class="text-gray-400">Full Time - $140,000 - $170,000</p>
 
                 <button class="SelectedByInterview hidden btn w-20 btn-success  btn-sm">Interview</button>
@@ -64,7 +66,7 @@
 
         <div class="card bg-gray-800 my-3 text-neutral-content w-full">
             <button class="DeleteBtn btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            <div class="card-body">
+            <div class="card-body lg:text-sm text-[12px] ">
                 <h2 class="card-title text-blue-300">NextGen Labs (Backend Developer)</h2>
                 <p class="leading-1.5 text-gray-400">Remote (Austin, TX)</p>
                 <p class="text-gray-400">Full Time - $120,000 - $150,000</p>
@@ -83,7 +85,7 @@
 
         <div class="card bg-gray-800 my-3 text-neutral-content w-full">
             <button class="DeleteBtn btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            <div class="card-body">
+            <div class="card-body lg:text-sm text-[12px] ">
                 <h2 class="card-title text-green-300">CloudWave Inc. (DevOps Engineer)</h2>
                 <p class="leading-1.5 text-gray-400">Hybrid (Seattle, WA)</p>
                 <p class="text-gray-400">Full Time - $130,000 - $160,000</p>
@@ -102,7 +104,7 @@
 
         <div class="card bg-gray-800 my-3 text-neutral-content w-full">
             <button class="DeleteBtn btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            <div class="card-body">
+            <div class="card-body lg:text-sm text-[12px] ">
                 <h2 class="card-title text-purple-300">BrightPath AI (Machine Learning Engineer)</h2>
                 <p class="leading-1.5 text-gray-400">Remote (Boston, MA)</p>
                 <p class="text-gray-400">Full Time - $150,000 - $180,000</p>
@@ -121,7 +123,7 @@
 
         <div class="card bg-gray-800 my-3 text-neutral-content w-full">
             <button class="DeleteBtn btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            <div class="card-body">
+            <div class="card-body lg:text-sm text-[12px] ">
                 <h2 class="card-title text-pink-300">PixelForge Studios (UI/UX Designer)</h2>
                 <p class="leading-1.5 text-gray-400">Onsite (New York, NY)</p>
                 <p class="text-gray-400">Full Time - $90,000 - $120,000</p>
@@ -140,7 +142,7 @@
 
         <div class="card bg-gray-800 my-3 text-neutral-content w-full">
             <button class="DeleteBtn btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            <div class="card-body">
+            <div class="card-body lg:text-sm text-[12px] ">
                 <h2 class="card-title text-red-300">FinTech Pro (Full Stack Engineer)</h2>
                 <p class="leading-1.5 text-gray-400">Remote (Chicago, IL)</p>
                 <p class="text-gray-400">Full Time - $135,000 - $165,000</p>
@@ -159,7 +161,7 @@
 
         <div class="card bg-gray-800 my-3 text-neutral-content w-full">
             <button class="DeleteBtn btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            <div class="card-body">
+            <div class="card-body lg:text-sm text-[12px] ">
                 <h2 class="card-title text-yellow-300">GreenTech Systems (Software Engineer)</h2>
                 <p class="leading-1.5 text-gray-400">Hybrid (Denver, CO)</p>
                 <p class="text-gray-400">Full Time - $110,000 - $140,000</p>
@@ -178,7 +180,7 @@
 
         <div class="card bg-gray-800 my-3 text-neutral-content w-full">
             <button class="DeleteBtn btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            <div class="card-body">
+            <div class="card-body lg:text-sm text-[12px] ">
                 <h2 class="card-title text-indigo-300">CyberShield Corp (Security Analyst)</h2>
                 <p class="leading-1.5 text-gray-400">Onsite (Washington, DC)</p>
                 <p class="text-gray-400">Full Time - $125,000 - $155,000</p>
@@ -201,8 +203,8 @@
     <div class="interviewCard interviewMainCard hidden ">
         <div class="NotFoundPageInterview my-20 text-center mx-auto">
             <img class="mx-auto" src="jobs.png" alt="">
-            <h1 class="text-3xl   text-blue-500">No jobs available </h1>
-            <p>Check back soon for new job opportunities</p>
+            <h1 class="lg:text-3xl   text-blue-500">No jobs available </h1>
+            <p class="lg:text-sm text-[12px]">Check back soon for new job opportunities</p>
         </div>
 
 
@@ -212,8 +214,8 @@
     <div class="rejectedCard rejectedMainCard hidden ">
         <div class="NotFoundPageRejected my-20 text-center mx-auto">
             <img class="mx-auto" src="jobs.png" alt="">
-            <h1 class="text-3xl   text-blue-500">No jobs available </h1>
-            <p>Check back soon for new job opportunities</p>
+            <h1 class="lg:text-3xl   text-blue-500">No jobs available </h1>
+            <p class="lg:text-sm text-[12px]">Check back soon for new job opportunities</p>
         </div>
     </div>
 
