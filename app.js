@@ -1,109 +1,197 @@
-// Page change Button
-let all = document.querySelector("#all");
-let interview = document.querySelector("#interview");
-let rejected = document.querySelector("#rejected");
+function UpdateAllCount() {
+  // Count All section card
+  let AllCardCount = document.querySelectorAll(".allCard .card").length;
+  document.querySelector(".nav-total-card").textContent = AllCardCount;
+  document.querySelector(".nav-total-card1").textContent = AllCardCount;
+}
+UpdateAllCount();
 
-// Pages
-let allPage = document.querySelector("#allPage");
-let interviewPage = document.querySelector("#interviewPage");
-let rejectedPage = document.querySelector("#rejectedPage");
+function allCountReturn  ()
+{
+  return document.querySelectorAll(".allCard .card").length;
+}
 
-// Counter Selected
-let CountPage = document.querySelector("#allcount");
-let CountPage2 = document.querySelector("#allcount2");
-let CountPage3 = document.querySelector("#allcount3");
-let allcount1 = document.querySelector("#allcount1");
+function UpdateInterviewCount() {
+  // Update card count
+  let InterviewCardCount = document.querySelectorAll(
+    ".interviewMainCard .card",
+  ).length;
+  document.querySelector(".nav-interview-card").textContent =
+    InterviewCardCount;
+}
 
-// Rejected Pages
-let nofound1 = document.querySelector("#nofound1");
-let nofound2 = document.querySelector("#nofound2");
+function RejectedCardCount() {
+  // Update card count
+  let RejectedCardCount = document.querySelectorAll(
+    ".rejectedMainCard .card",
+  ).length;
+  document.querySelector(".nav-rejected-card").textContent = RejectedCardCount;
+}
 
-// Count Available Page
-const count = document.querySelectorAll("#allPage > div").length;
-CountPage.textContent = count;
-allcount1.textContent = count;
+function AddingSelectedBtn(card) {
+  const SelectedBtn = card.querySelector(".SelectedByInterview");
+  SelectedBtn.classList.remove("hidden");
+}
 
-// Pages change tab
-all.addEventListener("click", (e) => {
-  // Show and hide page
-  allPage.classList.remove("hidden");
-  interviewPage.classList.add("hidden");
-  rejectedPage.classList.add("hidden");
+// avaiable count update
+function slideInterviewCount (InterviewCardCount)
+{
+  const totalCount = allCountReturn()
+  const count = document.querySelector('.count')
+  count.textContent = `${InterviewCardCount} of ${totalCount}`
+}
+
+function AddingRejectedBtn(card) {
+  const SelectedBtn = card.querySelector(".SelectedByRejected");
+  SelectedBtn.classList.remove("hidden");
+}
+
+// card show hidden section
+let allShow = document.querySelector("#allShow");
+let interviewShow = document.querySelector("#interviewShow");
+let rejectedShow = document.querySelector("#rejectedShow");
+
+// Main card section
+let allMainCard = document.querySelector(".allMainCard");
+let interviewMainCard = document.querySelector(".interviewMainCard");
+let rejectedMainCard = document.querySelector(".rejectedMainCard");
+
+allShow.addEventListener("click", (e) => {
+  // Route Change
+  allMainCard.classList.remove("hidden");
+  interviewMainCard.classList.add("hidden");
+  rejectedMainCard.classList.add("hidden");
 });
 
-interview.addEventListener("click", (e) => {
-  // Count Available Page
-  const count = document.querySelectorAll("#interviewPage > div").length;
-  CountPage.textContent = `${count} of 8 `;
-  CountPage2.textContent = count;
+interviewShow.addEventListener("click", (e) => {
+  // Route Change
+  interviewMainCard.classList.remove("hidden");
+  allMainCard.classList.add("hidden");
+  rejectedMainCard.classList.add("hidden");
 
-  if (count <= 0) {
-    nofound2.classList.remove("hidden");
+  // Update card count
+  let InterviewCardCount = document.querySelectorAll(
+    ".interviewMainCard .card",
+  ).length;
+  document.querySelector(".nav-interview-card").textContent =
+    InterviewCardCount;
+
+  slideInterviewCount(InterviewCardCount)
+
+  if (InterviewCardCount > 0) {
+    document.querySelector(".NotFoundPageInterview").classList.add("hidden");
   } else {
-    nofound2.classList.add("hidden");
+    document.querySelector(".NotFoundPageInterview").classList.remove("hidden");
   }
-
-  // Show and Hide page
-  allPage.classList.add("hidden");
-  rejectedPage.classList.add("hidden");
-  interviewPage.classList.remove("hidden");
 });
 
-rejected.addEventListener("click", (e) => {
-  // Count Available Page
-  const count = document.querySelectorAll("#rejectedPage > div").length;
-  CountPage.textContent = `${count} of 8 `;
-  CountPage3.textContent = count;
+rejectedShow.addEventListener("click", (e) => {
+  // Route Change
+  rejectedMainCard.classList.remove("hidden");
+  allMainCard.classList.add("hidden");
+  interviewMainCard.classList.add("hidden");
 
-  if (count <= 0) {
-    nofound1.classList.remove("hidden");
+  // Update card count
+  let InterviewCardCount = document.querySelectorAll(
+    ".rejectedMainCard .card",
+  ).length;
+  document.querySelector(".nav-rejected-card").textContent = InterviewCardCount;
+
+  slideInterviewCount(InterviewCardCount)
+
+  if (InterviewCardCount > 0) {
+    document.querySelector(".NotFoundPageRejected").classList.add("hidden");
   } else {
-    nofound1.classList.add("hidden");
+    document.querySelector(".NotFoundPageRejected").classList.remove("hidden");
   }
-
-  // Show and Hide page
-  allPage.classList.add("hidden");
-  interviewPage.classList.add("hidden");
-  rejectedPage.classList.remove("hidden");
 });
 
-// Pages Change
-allPage.addEventListener("click", (e) => {
-  // Left Highlight Line
-  let original = e.target.closest(".card");
-  original.classList.add("border-l-6");
 
+// All Card Delete
+allMainCard.addEventListener("click", (e) => {
+  if (e.target.classList.contains("DeleteBtn")) {
+    const card = e.target.closest(".card");
+    if (card) {
+      card.remove();
+      UpdateAllCount();
+    }
+  }
+});
+
+// interview delete button
+interviewMainCard.addEventListener("click", (e) => {
+  if (e.target.classList.contains("DeleteBtn")) {
+    const card = e.target.closest(".card");
+    if (card) {
+      card.remove();
+      UpdateInterviewCount();
+    }
+  }
+});
+
+// rejected delete button
+rejectedMainCard.addEventListener("click", (e) => {
+  if (e.target.classList.contains("DeleteBtn")) {
+    const card = e.target.closest(".card");
+    if (card) {
+      card.remove();
+      RejectedCardCount();
+    }
+  }
+});
+
+// Event Click to Interview and Rejected
+// sent allCard to interview
+document.querySelector(".allCard").addEventListener("click", (e) => {
+  const card = e.target.closest(".card");
   if (e.target.textContent === "Interview") {
-    interviewPage.appendChild(original.cloneNode(true));
-    e.target.classList.remove("btn-outline");
-  } else if (e.target.textContent === "Rejected") {
-    rejectedPage.appendChild(original.cloneNode(true));
-    e.target.classList.remove("btn-outline");
-  } else if (e.target.textContent === "remove") {
-    e.target.closest(".card").remove();
-    // Count Available Page
-    const count = document.querySelectorAll("#allPage > div").length;
-    CountPage.textContent = count;
-    allcount1.textContent = count;
+    AddingSelectedBtn(card);
+    card.classList.add("border-1");
+    interviewMainCard.appendChild(card.cloneNode(true));
+
+    UpdateInterviewCount();
+    RejectedCardCount();
+  } else if (e.target.textContent == "Rejected") {
+    AddingRejectedBtn(card);
+    card.classList.add("border-1");
+    rejectedMainCard.appendChild(card.cloneNode(true));
+    UpdateInterviewCount();
+    RejectedCardCount();
   }
 });
 
-interviewPage.addEventListener("click", (e) => {
-  if (e.target.textContent == "Interview") {
-    interviewPage.appendChild(e.target.closest(".card"));
+// send interview to rejected
+document.querySelector(".interviewCard").addEventListener("click", (e) => {
+  const card = e.target.closest(".card");
+  if (e.target.textContent === "Interview") {
+    interviewMainCard.appendChild(card);
+    UpdateInterviewCount();
+    RejectedCardCount();
   } else if (e.target.textContent == "Rejected") {
-    rejectedPage.appendChild(e.target.closest(".card"));
-  } else if (e.target.textContent === "remove") {
-    e.target.closest(".card").remove();
+    const SelectedBtn = card.querySelector(".SelectedByInterview");
+    SelectedBtn.classList.add("hidden");
+    AddingRejectedBtn(card)
+
+    rejectedMainCard.appendChild(card);
+    UpdateInterviewCount();
+    RejectedCardCount();
   }
 });
 
-rejectedPage.addEventListener("click", (e) => {
-  if (e.target.textContent == "Interview") {
-    interviewPage.appendChild(e.target.closest(".card"));
+// send rejected to interview
+document.querySelector(".rejectedCard").addEventListener("click", (e) => {
+  const card = e.target.closest(".card");
+  if (e.target.textContent === "Interview") {
+    const SelectedBtn = card.querySelector(".SelectedByRejected");
+    SelectedBtn.classList.add("hidden");
+    AddingSelectedBtn(card)
+    
+    interviewMainCard.appendChild(card);
+    UpdateInterviewCount();
+    RejectedCardCount();
   } else if (e.target.textContent == "Rejected") {
-    rejectedPage.appendChild(e.target.closest(".card"));
-  } else if (e.target.textContent === "remove") {
-    e.target.closest(".card").remove();
+    rejectedMainCard.appendChild(card);
+    UpdateInterviewCount();
+    RejectedCardCount();
   }
 });
